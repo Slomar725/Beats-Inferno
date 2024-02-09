@@ -24,4 +24,37 @@ public class ButtonCheck : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+    public void StartGame()
+    {
+        SceneManager.LoadScene("StoryOrSelect");
+    }
+    public void HelpScene()
+    {
+        SceneManager.LoadScene("Help");
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+    public void CreditsScene()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+    public void StoryScene()
+    {
+        SceneManager.LoadScene("CutScene1");
+    }
+    public void FreePlayMode()
+    {
+        SceneManager.LoadScene("FreePlay");
+    }
+    public void SkipSceneOne()
+    {
+        SceneManager.LoadScene("Yesman");
+    }
+    public void FreePlayBack()
+    {
+        SceneManager.LoadScene("StoryOrSelect");
+    }
+    
 }
