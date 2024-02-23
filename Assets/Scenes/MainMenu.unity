@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 203061693}
   - component: {fileID: 203061692}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: MusicForFrontScenes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -286,9 +286,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e3903f052f6e1c84385cd598b244e788, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a128da18fe1dc9e4ab32e819cbf1d7e2, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
