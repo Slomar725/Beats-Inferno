@@ -65,6 +65,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.O)) //Infinite health dev cheat
+        {
+            Health = 10000000;
+        }
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             theMusic.Stop();
