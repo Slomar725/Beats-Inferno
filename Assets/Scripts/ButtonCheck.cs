@@ -50,7 +50,7 @@ public class ButtonCheck : MonoBehaviour
     }
     public void SkipSceneOne()
     {
-        SceneManager.LoadScene("Yesman");
+        SceneManager.LoadScene("LevelOne");
     }
     public void FreePlayBack()
     {

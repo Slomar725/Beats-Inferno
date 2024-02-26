@@ -6,14 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: d88f2f331b6f0b3499bc94110b652024
+  - enabled: 1
     path: Assets/Scenes/Help.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Oh yeah/Scenes/Start.unity
     guid: a7efac3f0da73e7439004acd29203987
-  - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: d88f2f331b6f0b3499bc94110b652024
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: facae189ffef2e14ca5556c04789e54d
@@ -27,6 +27,6 @@ EditorBuildSettings:
     path: Assets/Scenes/StoryOrSelect.unity
     guid: 28022f62d5d5ac64196a645c0efc2acf
   - enabled: 1
-    path: Assets/Scenes/Yesman.unity
+    path: Assets/Scenes/LevelOne.unity
     guid: 6e7f4410f8f0fca4c8962899febdbb1b
   m_configObjects: {}
