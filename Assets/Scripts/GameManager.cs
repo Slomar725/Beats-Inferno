@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     public GameObject resultsScreen;
     public Text percentHitText, normalsText, goodsText, perfectsText, missedText, rankText, finalScoreText;
 
-    public int Health = 100;
+    public int Health;
     public GameObject failedScreen;
 
     public string rankVal;
@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
     {
         sceneIndex = SceneManager.GetActiveScene().buildIndex;
 
+        Health = 400;
+        
         instance = this;
 
         scoreText.text = "Score: 0";
@@ -65,6 +67,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.O)) //Infinite health dev cheat
+        {
+            Health = 10000000;
+        }
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             theMusic.Stop();
