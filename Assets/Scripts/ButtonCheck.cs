@@ -56,5 +56,9 @@ public class ButtonCheck : MonoBehaviour
     {
         SceneManager.LoadScene("StoryOrSelect");
     }
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     
 }
