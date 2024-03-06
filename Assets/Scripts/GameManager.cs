@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
-    int sceneIndex;
+    //int sceneIndex;
 
     public int currentScore;
     public int scorePerNote = 100;
@@ -48,11 +48,12 @@ public class GameManager : MonoBehaviour
 
     public GameObject ResetButton;
     public GameObject HomeButton;
+    public GameObject NextLevelButton;
 
     // Start is called before the first frame update
     void Start()
     {
-        sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        //sceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         Health = 400;
         
@@ -97,11 +98,13 @@ public class GameManager : MonoBehaviour
         {
             if(!theMusic.isPlaying && !resultsScreen.activeInHierarchy)
             {
+               
                 resultsScreen.SetActive(true);
                 if(!restartingText.activeInHierarchy)
                 {
                     ResetButton.SetActive(true);
                     HomeButton.SetActive(true);
+                    NextLevelButton.SetActive(true);
                 }
 
                 normalsText.text = "" + normalHits;
@@ -224,7 +227,8 @@ public class GameManager : MonoBehaviour
         theMusic.Stop();
         yield return new WaitForSeconds(2);
         failedScreen.SetActive(false);
-        SceneManager.LoadScene(sceneIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //SceneManager.LoadScene(sceneIndex);
     }
     public IEnumerator ResetPlayer()
     {
