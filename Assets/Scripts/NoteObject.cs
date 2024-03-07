@@ -39,7 +39,7 @@ public class NoteObject : MonoBehaviour
                     GameManager.instance.GoodHit();
                     Instantiate(goodEffect, transform.position, goodEffect.transform.rotation);
                 }
-                else
+                // else if tag == "poision" then GameManager.instance.PosionHit();
                 {
                     Debug.Log("PerfectHit");
                     GameManager.instance.PerfectHit();
@@ -55,6 +55,7 @@ public class NoteObject : MonoBehaviour
         {
             canBePressed = true;
         }
+        
     }
 
     private void OnTriggerExit2D(Collider2D other)

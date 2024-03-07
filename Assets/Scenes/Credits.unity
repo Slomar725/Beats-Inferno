@@ -258,17 +258,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Programmer / UI - Omar
+  m_text: 'Programmer / UI / Art - Omar
 
 
     Music - Julian
 
 
-    Art/Animations - Jerry
+    Art/Animations
+    - Jerry
 
 
-    Art
-    - Keith'
+    Art - Keith'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ccb191e9fec870749aa072bec77186bc, type: 2}
   m_sharedMaterial: {fileID: -3426857170040301426, guid: ccb191e9fec870749aa072bec77186bc, type: 2}
