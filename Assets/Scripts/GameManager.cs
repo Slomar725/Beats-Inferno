@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     public Text scoreText;
     public Text multiText;
+    public Text HealthText;
 
     public float totalNotes;
     public float normalHits;
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
         //sceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         Health = 400;
+        HealthText.text = "Health: " + Health;
         
         instance = this;
 
@@ -71,6 +73,7 @@ public class GameManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.O)) //Infinite health dev cheat
         {
             Health = 10000000;
+            HealthText.text = "Health: " + Health;
         }
 
         if (Input.GetKeyDown(KeyCode.P))
@@ -209,12 +212,13 @@ public class GameManager : MonoBehaviour
         multiplierTracker = 0;
 
         multiText.text = "Multiplier: x" + currentMultiplier;
+        HealthText.text = "Health: " + Health; 
 
         missedHits++;
         Health -= 50;
         
 
-        if(Health == 0)
+        if(Health <= 0)
         {
             failedScreen.SetActive(true);
             theBS.hasStarted = false;

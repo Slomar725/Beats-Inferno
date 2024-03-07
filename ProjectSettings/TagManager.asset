@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Activator
   - GameMusic
+  - Poison
   layers:
   - Default
   - TransparentFX
