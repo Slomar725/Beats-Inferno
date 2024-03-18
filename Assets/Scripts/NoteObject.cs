@@ -49,7 +49,8 @@ public class NoteObject : MonoBehaviour
                 {
                     GameManager.instance.Health -= 50;
                     GameManager.instance.HealthText.text = "Health: " + GameManager.instance.Health;
-
+                    Animation.instance.noDamage();
+                    GameManager.instance.checkDead();
                 }
             }
         }
@@ -66,12 +67,13 @@ public class NoteObject : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (gameObject.activeSelf)
+        if (gameObject.activeSelf && gameObject.tag != "Poison")
         {
             if (other.tag == "Activator" && gameObject.tag != "Poison")
             {
                 canBePressed = false;
 
+                Animation.instance.noDamage();
                 GameManager.instance.NoteMissed();
                 Instantiate(missEffect, transform.position, missEffect.transform.rotation);
             }

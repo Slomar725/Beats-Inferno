@@ -60,5 +60,25 @@ public class ButtonCheck : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    public void LevelOne()
+    {
+        SceneManager.LoadScene("LevelOne");
+    }
+        public void LevelTwo()
+    {
+        SceneManager.LoadScene("Level Two");
+    }
+        public void LevelThree()
+    {
+        SceneManager.LoadScene("LevelThree");
+    }
+    public void Tutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
+    public void EndScene()
+    {
+        SceneManager.LoadScene("Thanks");
+    }
     
 }

@@ -51,10 +51,15 @@ public class GameManager : MonoBehaviour
     public GameObject HomeButton;
     public GameObject NextLevelButton;
 
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
         //sceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        
 
         Health = 400;
         HealthText.text = "Health: " + Health;
@@ -86,6 +91,7 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(ResetMap());
             StartCoroutine(ResetPlayer());
+
         }
 
         if(!startPlaying)
@@ -96,6 +102,7 @@ public class GameManager : MonoBehaviour
                 theBS.hasStarted = true;
 
                 theMusic.Play();
+                
             }
         }else
         {
@@ -107,7 +114,14 @@ public class GameManager : MonoBehaviour
                 {
                     ResetButton.SetActive(true);
                     HomeButton.SetActive(true);
-                    NextLevelButton.SetActive(true);
+                    if(Health > 0)
+                    {
+                      NextLevelButton.SetActive(true);
+                    }
+                    else
+                    {
+                      NextLevelButton.SetActive(false);
+                    }
                 }
 
                 normalsText.text = "" + normalHits;
@@ -217,6 +231,7 @@ public class GameManager : MonoBehaviour
         missedHits++;
         Health -= 50;
         
+        
 
         if(Health <= 0)
         {
@@ -239,6 +254,15 @@ public class GameManager : MonoBehaviour
         restartingText.SetActive(true);
         yield return new WaitForSeconds(2);
         restartingText.SetActive(false);
+    }
+    public void checkDead()
+    {
+        if(Health <= 0)
+        {
+            failedScreen.SetActive(true);
+            theBS.hasStarted = false;
+            theMusic.Stop();
+        }
     }
 
 
