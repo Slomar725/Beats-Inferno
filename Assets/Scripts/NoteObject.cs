@@ -28,22 +28,29 @@ public class NoteObject : MonoBehaviour
 
                 //GameManager.instance.NoteHit();
 
-                if(Mathf.Abs(transform.position.y) > 0.25)
+                if((Mathf.Abs(transform.position.y) > 0.25) && gameObject.tag != "Poison")
                 {
                     Debug.Log("Hit");
                     GameManager.instance.NormalHit();
                     Instantiate(hitEffect, transform.position, hitEffect.transform.rotation);
-                }else if(Mathf.Abs(transform.position.y) > 0.05f)
+                }else if((Mathf.Abs(transform.position.y) > 0.05f) && gameObject.tag != "Poison")
                 {
                     Debug.Log("GoodHit");
                     GameManager.instance.GoodHit();
                     Instantiate(goodEffect, transform.position, goodEffect.transform.rotation);
                 }
-                else
+                 else if(gameObject.tag != "Poison")
                 {
                     Debug.Log("PerfectHit");
                     GameManager.instance.PerfectHit();
                     Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
+                }
+                else if (gameObject.tag == "Poison")
+                {
+                    GameManager.instance.Health -= 50;
+                    GameManager.instance.HealthText.text = "Health: " + GameManager.instance.Health;
+                    Animation.instance.noDamage();
+                    GameManager.instance.checkDead();
                 }
             }
         }
@@ -55,16 +62,18 @@ public class NoteObject : MonoBehaviour
         {
             canBePressed = true;
         }
+        
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (gameObject.activeSelf)
+        if (gameObject.activeSelf && gameObject.tag != "Poison")
         {
-            if (other.tag == "Activator")
+            if (other.tag == "Activator" && gameObject.tag != "Poison")
             {
                 canBePressed = false;
 
+                Animation.instance.noDamage();
                 GameManager.instance.NoteMissed();
                 Instantiate(missEffect, transform.position, missEffect.transform.rotation);
             }

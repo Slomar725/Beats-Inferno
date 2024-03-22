@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class MusicToPlay : MonoBehaviour
 {
-    public GameObject GameMusic;
-    // Start is called before the first frame update
-   void Awake()
-   {
+	public static MusicToPlay instance;
 
-    GameObject[] musicObj = GameObject.FindGameObjectsWithTag("GameMusic");
-    if (musicObj.Length > 1)
-    {
-        Destroy(this.gameObject);
-    }
-    DontDestroyOnLoad(this.gameObject);
-   }
+	void Awake()
+	{
+		if (instance != null)
+		{
+			Destroy(gameObject);
+		}
+		else
+		{
+			instance = this;
+			DontDestroyOnLoad(this.gameObject);
+		}
+		
+
+
+	}
 }
