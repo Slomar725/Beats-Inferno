@@ -9,23 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d88f2f331b6f0b3499bc94110b652024
   - enabled: 1
-    path: Assets/Scenes/Help.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Oh yeah/Scenes/Start.unity
-    guid: a7efac3f0da73e7439004acd29203987
-  - enabled: 1
-    path: Assets/Scenes/Credits.unity
-    guid: facae189ffef2e14ca5556c04789e54d
+    path: Assets/Scenes/StoryOrSelect.unity
+    guid: 28022f62d5d5ac64196a645c0efc2acf
   - enabled: 1
     path: Assets/Scenes/CutScene1.unity
     guid: f9d8650c55877004ca918aa4c050d6ee
-  - enabled: 1
-    path: Assets/Scenes/FreePlay.unity
-    guid: 06ce9bdc0f81ffc4ca2f99113b625244
-  - enabled: 1
-    path: Assets/Scenes/StoryOrSelect.unity
-    guid: 28022f62d5d5ac64196a645c0efc2acf
   - enabled: 1
     path: Assets/Scenes/LevelOne.unity
     guid: 3adfd94211e98ee439cdacd7667526fd
@@ -35,6 +23,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelThree.unity
     guid: b892aabded51dfd49885daccaf9f4847
+  - enabled: 1
+    path: Assets/Scenes/FreePlay.unity
+    guid: 06ce9bdc0f81ffc4ca2f99113b625244
+  - enabled: 1
+    path: Assets/Oh yeah/Scenes/Start.unity
+    guid: a7efac3f0da73e7439004acd29203987
+  - enabled: 1
+    path: Assets/Scenes/Help.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: facae189ffef2e14ca5556c04789e54d
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 5fb7bbc4d658a4d4881877ebf0244cca
