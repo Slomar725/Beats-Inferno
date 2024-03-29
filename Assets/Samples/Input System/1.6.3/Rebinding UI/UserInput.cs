@@ -20,6 +20,9 @@ public class UserInput : MonoBehaviour
 	private InputAction _JAction;
 	private InputAction _KAction;
 
+
+
+
 	private void Awake()
 	{
 		if(instance == null)
