@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     public float goodHits;
     public float perfectHits;
     public float missedHits;
+    
 
     public GameObject resultsScreen;
     public Text percentHitText, normalsText, goodsText, perfectsText, missedText, rankText, finalScoreText;
@@ -44,12 +45,19 @@ public class GameManager : MonoBehaviour
     public GameObject failedScreen;
 
     public string rankVal;
+    public Text changeRankVal;
+    public int comboVal;
+    public Text comboText;
+    public GameObject comboHolder;
+
 
     public GameObject restartingText;
+    public GameObject PressAnyKeyStart;
 
     public GameObject ResetButton;
     public GameObject HomeButton;
     public GameObject NextLevelButton;
+    GameObject[] poisonNotes;
 
     
 
@@ -60,7 +68,7 @@ public class GameManager : MonoBehaviour
         //sceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         
-
+        
         Health = 400;
         HealthText.text = "Health: " + Health;
         
@@ -69,7 +77,11 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
 
+        poisonNotes = GameObject.FindGameObjectsWithTag("Poison");
+        int poison = poisonNotes.Length;
         totalNotes = FindObjectsOfType<NoteObject>().Length;
+        totalNotes = totalNotes - poison;
+        
     }
 
     // Update is called once per frame
@@ -100,6 +112,7 @@ public class GameManager : MonoBehaviour
             {
                 startPlaying = true;
                 theBS.hasStarted = true;
+                PressAnyKeyStart.SetActive(false);
 
                 theMusic.Play();
                 
@@ -108,7 +121,7 @@ public class GameManager : MonoBehaviour
         {
             if(!theMusic.isPlaying && !resultsScreen.activeInHierarchy)
             {
-               
+                comboHolder.SetActive(false);
                 resultsScreen.SetActive(true);
                 if(!restartingText.activeInHierarchy)
                 {
@@ -218,6 +231,7 @@ public class GameManager : MonoBehaviour
         perfectHits++;
     }
 
+
     public void NoteMissed()
     {
         Debug.Log("Missed Note");
@@ -263,6 +277,43 @@ public class GameManager : MonoBehaviour
             theBS.hasStarted = false;
             theMusic.Stop();
         }
+    }
+    public void changeRank()
+    {
+         float totalHit = normalHits + goodHits + perfectHits;
+         float percentHit = (totalHit / totalNotes) * 100f;
+         percentHitText.text = percentHit.ToString("F1") + "%";
+                    if (percentHit >= 20)
+                    {
+                        rankVal = "D";
+                        if (percentHit >= 65)
+                        {
+                            rankVal = "C";
+                            if (percentHit >= 80)
+                            {
+                                rankVal = "B";
+                                if (percentHit >= 90)
+                                {
+                                    rankVal = "A";
+                                    if (percentHit >= 100)
+                                    {
+                                        rankVal = "S";
+                                    }
+                                }
+                            }
+                        }
+                    }
+            changeRankVal.text = rankVal;
+    }
+    public void Combo()
+    {
+        comboVal++;
+        comboText.text = comboVal.ToString();
+    }
+    public void ComboEnd()
+    {
+        comboVal = 0;
+        comboText.text = comboVal.ToString();
     }
 
 

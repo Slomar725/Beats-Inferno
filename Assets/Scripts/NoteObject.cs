@@ -27,23 +27,31 @@ public class NoteObject : MonoBehaviour
                 gameObject.SetActive(false);
 
                 //GameManager.instance.NoteHit();
-
+                //if((Mathf.Abs(transform.position.y) > 0.40) && gameObject.tag != "Poison")
+                //{
+                    //GameManager.instance.NoteMissed();
+                    //GameManager.instance.ComboEnd();
+                    //Instantiate(missEffect, transform.position, missEffect.transform.rotation);
+                //}
                 if((Mathf.Abs(transform.position.y) > 0.25) && gameObject.tag != "Poison")
                 {
                     Debug.Log("Hit");
                     GameManager.instance.NormalHit();
                     Instantiate(hitEffect, transform.position, hitEffect.transform.rotation);
+                    GameManager.instance.Combo();
                 }else if((Mathf.Abs(transform.position.y) > 0.05f) && gameObject.tag != "Poison")
                 {
                     Debug.Log("GoodHit");
                     GameManager.instance.GoodHit();
                     Instantiate(goodEffect, transform.position, goodEffect.transform.rotation);
+                    GameManager.instance.Combo();
                 }
                  else if(gameObject.tag != "Poison")
                 {
                     Debug.Log("PerfectHit");
                     GameManager.instance.PerfectHit();
                     Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
+                    GameManager.instance.Combo();
                 }
                 else if (gameObject.tag == "Poison")
                 {
@@ -51,7 +59,11 @@ public class NoteObject : MonoBehaviour
                     GameManager.instance.HealthText.text = "Health: " + GameManager.instance.Health;
                     Animation.instance.noDamage();
                     GameManager.instance.checkDead();
+                    GameManager.instance.ComboEnd();
                 }
+                
+                GameManager.instance.changeRank();
+                
             }
         }
     }
@@ -67,15 +79,18 @@ public class NoteObject : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (gameObject.activeSelf && gameObject.tag != "Poison")
+        if (gameObject.activeSelf )
         {
-            if (other.tag == "Activator" && gameObject.tag != "Poison")
+            if (other.tag == "Activator")
             {
                 canBePressed = false;
-
-                Animation.instance.noDamage();
-                GameManager.instance.NoteMissed();
-                Instantiate(missEffect, transform.position, missEffect.transform.rotation);
+                if(gameObject.tag != "Poison")
+                {
+                    GameManager.instance.ComboEnd();
+                    Animation.instance.noDamage();
+                    GameManager.instance.NoteMissed();
+                    Instantiate(missEffect, transform.position, missEffect.transform.rotation);
+                }
             }
         }
     }

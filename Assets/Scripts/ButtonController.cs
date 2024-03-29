@@ -15,12 +15,14 @@ public class ButtonController : MonoBehaviour
     void Start()
     {
         theSR = GetComponent<SpriteRenderer>();
+
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(keyToPress))
         {
             theSR.sprite = pressedImage;
