@@ -9,6 +9,7 @@ TagManager:
   - Poison
   - noSpam
   - HoldFN
+  - LetGo
   layers:
   - Default
   - TransparentFX

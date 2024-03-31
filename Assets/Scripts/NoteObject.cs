@@ -15,6 +15,7 @@ public class NoteObject : MonoBehaviour
     public bool cannotBePressed;
 
 
+
     
 
     // Start is called before the first frame update
@@ -28,18 +29,14 @@ public class NoteObject : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyToPress))
         {
-           if(cannotBePressed)
-           {
-                
-                gameObject.SetActive(false); 
-                GameManager.instance.ComboEnd();
-                Animation.instance.noDamage();
-                GameManager.instance.NoteMissed();
-                GameManager.instance.checkDead();
-                Instantiate(missEffect, transform.position, missEffect.transform.rotation);
-           }
+
            if(canBePressed)
            {
+                GameManager.instance.everythingTrue = true;
+                if(cannotBePressed)
+                {
+                   
+                }
                 gameObject.SetActive(false);
                 //GameManager.instance.NoteHit();
                 //if((Mathf.Abs(transform.position.y) > 0.40) && gameObject.tag != "Poison")
@@ -48,7 +45,15 @@ public class NoteObject : MonoBehaviour
                     //GameManager.instance.ComboEnd();
                     //Instantiate(missEffect, transform.position, missEffect.transform.rotation);
                 //}
-                if((Mathf.Abs(transform.position.y) > 0.25f) && gameObject.tag != "Poison")
+                if(gameObject.tag == "LetGo")
+                { 
+                    GameManager.instance.ComboEnd();
+                    Animation.instance.noDamage();
+                    GameManager.instance.NoteMissed();
+                    GameManager.instance.checkDead();
+                    Instantiate(missEffect, transform.position, missEffect.transform.rotation);
+                }
+                else if((Mathf.Abs(transform.position.y) > 0.25f) && gameObject.tag != "Poison")
                 {
                     Debug.Log("Hit");
                     GameManager.instance.NormalHit();
@@ -80,6 +85,23 @@ public class NoteObject : MonoBehaviour
             
                 GameManager.instance.changeRank();   
            }
+           else if(cannotBePressed)
+           {
+               if(!GameManager.instance.everythingTrue)
+               {
+                    gameObject.SetActive(false); 
+                    GameManager.instance.ComboEnd();
+                    Animation.instance.noDamage();
+                    GameManager.instance.NoteMissed();
+                    GameManager.instance.checkDead();
+                    Instantiate(missEffect, transform.position, missEffect.transform.rotation);
+                    GameManager.instance.changeRank();
+               }
+           }
+        }
+        if(Input.GetKeyUp(KeyToPress))
+        {
+            GameManager.instance.everythingTrue = false;
         }
         if(Input.GetKeyUp(KeyToPress) && LongNoteScript.instance.canBeReleased)
         {
@@ -129,11 +151,13 @@ public class NoteObject : MonoBehaviour
         if(other.tag == "Activator")
         {
             canBePressed = true;
+            //StartCoroutine(WaitYes());
         }
         else if(other.tag == "noSpam")
-            {
+        {
                 cannotBePressed = true;
-            }
+                
+        }
         
     }
 
@@ -155,7 +179,15 @@ public class NoteObject : MonoBehaviour
             else if(other.tag == "noSpam")
             {
                 cannotBePressed = false;
+                
             }
         }
+    }
+    public IEnumerator WaitYes()
+    {
+        GameManager.instance.everythingTrue = true;
+        yield return new WaitForSeconds(0.5f);
+        GameManager.instance.everythingTrue = false;
+
     }
 }

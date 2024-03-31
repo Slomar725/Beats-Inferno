@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     public int Health;
     public GameObject failedScreen;
+    public GameObject fullComboOhYeah;
 
     public string rankVal;
     public Text changeRankVal;
@@ -58,6 +59,8 @@ public class GameManager : MonoBehaviour
     public GameObject HomeButton;
     public GameObject NextLevelButton;
     GameObject[] poisonNotes;
+
+    public bool everythingTrue;
 
     
 
@@ -127,6 +130,10 @@ public class GameManager : MonoBehaviour
                 {
                     ResetButton.SetActive(true);
                     HomeButton.SetActive(true);
+                    if(comboVal == totalNotes)
+                    {
+                        fullComboOhYeah.SetActive(true);
+                    }
                     if(Health > 0)
                     {
                       NextLevelButton.SetActive(true);
