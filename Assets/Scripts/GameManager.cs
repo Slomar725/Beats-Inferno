@@ -62,6 +62,25 @@ public class GameManager : MonoBehaviour
 
     public bool everythingTrue;
 
+    public GameObject actualCharacter;
+    public GameObject notDeadYet;
+    public GameObject characterDead;
+    public GameObject showPanel;
+    public GameObject backSquare;
+    public GameObject enemyYeah;
+    
+    public Animator forward;
+    public Animator back;
+
+    public GameObject PanelCover;
+    public GameObject playerWon;
+    public GameObject turnPlayeroff;
+    public GameObject turnEnemyOff;
+
+    public GameObject healthOff;
+    public GameObject scoreOff;
+    public GameObject multiplierOff;
+
     
 
 
@@ -104,6 +123,8 @@ public class GameManager : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.R))
         {
+            comboHolder.SetActive(false);
+            resultsScreen.SetActive(true);
             StartCoroutine(ResetMap());
             StartCoroutine(ResetPlayer());
 
@@ -124,24 +145,35 @@ public class GameManager : MonoBehaviour
         {
             if(!theMusic.isPlaying && !resultsScreen.activeInHierarchy)
             {
+                healthOff.SetActive(false);
+                multiplierOff.SetActive(false);
+                scoreOff.SetActive(false);
                 comboHolder.SetActive(false);
-                resultsScreen.SetActive(true);
-                if(!restartingText.activeInHierarchy)
-                {
-                    ResetButton.SetActive(true);
-                    HomeButton.SetActive(true);
-                    if(comboVal == totalNotes)
-                    {
+                if(Health > 0)
+                { 
+                  
+                   if(!restartingText.activeInHierarchy)
+                   {    
+                        turnEnemyOff.SetActive(false);
+                        playerWon.SetActive(true);
+                        PanelCover.SetActive(true);
+                        turnPlayeroff.SetActive(false);
+                        Animation.instance.won();
+                        StartCoroutine(ResultWait());
+                        ResetButton.SetActive(true);
+                        HomeButton.SetActive(true);
+                        NextLevelButton.SetActive(true);
+                   }
+                   if(comboVal == totalNotes)
+                   {
                         fullComboOhYeah.SetActive(true);
-                    }
-                    if(Health > 0)
-                    {
-                      NextLevelButton.SetActive(true);
-                    }
-                    else
-                    {
-                      NextLevelButton.SetActive(false);
-                    }
+                   }
+                }
+                else
+                {
+                    NextLevelButton.SetActive(false);
+                    StartCoroutine(Youdead());
+                    StartCoroutine(ResultWait());
                 }
 
                 normalsText.text = "" + normalHits;
@@ -245,7 +277,7 @@ public class GameManager : MonoBehaviour
 
         currentMultiplier = 1;
         multiplierTracker = 0;
-
+       
         multiText.text = "Multiplier: x" + currentMultiplier;
         HealthText.text = "Health: " + Health; 
 
@@ -322,6 +354,25 @@ public class GameManager : MonoBehaviour
         comboVal = 0;
         comboText.text = comboVal.ToString();
     }
-
+    public IEnumerator Youdead()
+    {
+        enemyYeah.SetActive(false);
+        actualCharacter.SetActive(false);
+        showPanel.SetActive(true);
+        notDeadYet.SetActive(true);
+        forward.Play("xcs");
+        yield return new WaitForSeconds(2);
+        backSquare.SetActive(true);
+        characterDead.SetActive(true);
+        back.Play("back");
+        //characterDead.SetActive(true);
+    }
+    public IEnumerator ResultWait()
+    {
+        yield return new WaitForSeconds(4);
+        resultsScreen.SetActive(true);
+        ResetButton.SetActive(true);
+        HomeButton.SetActive(true);
+    }
 
 }

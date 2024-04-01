@@ -30,6 +30,10 @@ public class Animation : MonoBehaviour
             
         }
     }
+    public void won()
+    {
+        animator.Play("ohYEah");
+    }
     public void noDamage()
         {
             isDamage = true;

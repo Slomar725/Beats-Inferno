@@ -8,7 +8,6 @@ public class LongNoteScript : MonoBehaviour
     public KeyCode KeyCodeToPress;
     public bool canBePressedTwo;
     public bool canBeReleased;
-    public bool everythingTrue;
     // Start is called before the first frame update
     void Start()
     {
