@@ -16,7 +16,7 @@ PlayerSettings:
   productName: Beats Inferno - 4
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.22745098, g: 0.058023293, b: 0.04579032, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 0.5
@@ -39,8 +39,10 @@ PlayerSettings:
     y: 0
     width: 1
     height: 1
-  m_SplashScreenLogos: []
-  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: a74ffd7f5975980419eeaf079d35220f, type: 3}
+  m_SplashScreenLogos:
+  - logo: {fileID: 21300000, guid: 1e6b54d46771dd14a838914864d6a0d2, type: 3}
+    duration: 2
+  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 1e6b54d46771dd14a838914864d6a0d2, type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1980
   defaultScreenHeight: 1080
