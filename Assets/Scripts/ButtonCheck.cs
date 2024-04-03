@@ -80,5 +80,9 @@ public class ButtonCheck : MonoBehaviour
     {
         SceneManager.LoadScene("Thanks");
     }
+    public void Settings()
+    {
+        SceneManager.LoadScene("Settings");
+    }
     
 }

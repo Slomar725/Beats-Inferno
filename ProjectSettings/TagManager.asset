@@ -7,6 +7,9 @@ TagManager:
   - Activator
   - GameMusic
   - Poison
+  - noSpam
+  - HoldFN
+  - LetGo
   layers:
   - Default
   - TransparentFX
